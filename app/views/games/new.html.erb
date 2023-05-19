@@ -1,0 +1,13 @@
+<h1>Longest Word Game</h1>
+<ol>
+  <% @letters.each do |letter|%>
+    <li><%= letter.capitalize %></li>
+  <% end %>
+</ol>
+
+<form action="/score" method="post" data-turbo="false">
+  <input type="text" name="word" placeholder="Try to find the longest word !">
+  <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+  <input id="token" name="letters" type="hidden" value="<%= @letters.to_json %>" />
+  <input type="submit" value="Play">
+</form>
